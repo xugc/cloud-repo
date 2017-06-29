@@ -3,7 +3,7 @@ package com.gc.cloud.service.config.client;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
  * Hello world!
  * 
  */
+//@SpringCloudApplication
 @SpringBootApplication
-@WebAppConfiguration
 @RestController
-public class App {
+@EnableDiscoveryClient
+public class CloudConfigClientApp {
 	@Value("${app.url}")
 	private String url;
 
@@ -24,6 +25,6 @@ public class App {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(App.class, args);
+		SpringApplication.run(CloudConfigClientApp.class, args);
 	}
 }
