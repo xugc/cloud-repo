@@ -8,8 +8,8 @@
 		<groupId>com.gc.cloud</groupId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>config-server</artifactId>
-	<name>config-server</name>
+	<artifactId>service-consumer</artifactId>
+	<name>service-consumer</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -17,19 +17,15 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-config</artifactId>
+			<artifactId>spring-cloud-starter-ribbon</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-config-server</artifactId>
+			<artifactId>spring-cloud-starter-eureka</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-bus-amqp</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-config-monitor</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -37,19 +33,4 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	<build>
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<!-- follow must set if @**@ included in configure file -->
-				<filtering>true</filtering>
-			</resource>
-		</resources>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
 </project>
