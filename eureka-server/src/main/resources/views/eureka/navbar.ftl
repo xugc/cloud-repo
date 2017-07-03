@@ -4,24 +4,24 @@
     <table id='instances' class="table table-condensed table-striped table-hover">
       <#if amazonInfo??>
         <tr>
-          <td>EUREKA SERVER</td>
+          <td>EUREKA服务器</td>
           <td>AMI: ${amiId!}</td>
         </tr>
         <tr>
-          <td>Zone</td>
+          <td>域</td>
           <td>${availabilityZone!}</td>
         </tr>
         <tr>
-          <td>instance-id</td>
+          <td>实例id</td>
           <td>${instanceId!}</td>
         </tr>
       </#if>
       <tr>
-        <td>Environment</td>
+        <td>环境</td>
         <td>${environment!}</td>
       </tr>
       <tr>
-        <td>Data center</td>
+        <td>数据中心</td>
         <td>${datacenter!}</td>
       </tr>
     </table>
@@ -29,23 +29,23 @@
   <div class="col-md-6">
     <table id='instances' class="table table-condensed table-striped table-hover">
       <tr>
-        <td>Current time</td>
+        <td>当前时间</td>
         <td>${currentTime}</td>
       </tr>
       <tr>
-        <td>Uptime</td>
+        <td>启动时间</td>
         <td>${upTime}</td>
       </tr>
       <tr>
-        <td>Lease expiration enabled</td>
+        <td>约定到期</td>
         <td>${registry.leaseExpirationEnabled?c}</td>
       </tr>
       <tr>
-        <td>Renews threshold</td>
+        <td>更新阈值</td>
         <td>${registry.numOfRenewsPerMinThreshold}</td>
       </tr>
       <tr>
-        <td>Renews (last min)</td>
+        <td>更新时间</td>
         <td>${registry.numOfRenewsInLastMin}</td>
       </tr>
     </table>
