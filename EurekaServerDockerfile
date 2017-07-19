@@ -1,0 +1,7 @@
+FROM java:7
+MAINTAINER "guchengxu1988@163.com"
+ADD eureka-server/target/eureka-server-0.0.1-SNAPSHOT.jar /eureka-server.jar
+RUN bash -c 'touch /eureka-server.jar'
+EXPOSE 1100
+ENTRYPOINT ["java","-jar","/eureka-server.jar"]
+#CMD ["--spring.cloud.config.name=esb1"]
