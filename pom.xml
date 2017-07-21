@@ -43,5 +43,6 @@
 		<module>config-server</module>
 		<module>eureka-server</module>
     <module>service-consumer</module>
+    <module>api-gateway</module>
   </modules>
 </project>
