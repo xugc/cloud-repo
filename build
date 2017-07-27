@@ -1,0 +1,11 @@
+#!/bin/sh
+export PROGRAM_SOURCE=/home/gc/git/cloud-repo
+cd $PROGRAM_SOURCE
+git pull
+export profile=$1
+if [ -z "${profile}" ]; then
+   profile=dev
+fi
+echo "current profile is : ${profile}."
+cd $PROGRAM_SOURCE
+mvn clean package -Dmaven.test.skip=true -P ${profile}
