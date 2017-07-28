@@ -1,0 +1,5 @@
+#!/bin/sh
+#by guchengxu1988@163.com
+#description:config-server
+export JAVA_HOME=/usr/local/java
+export CLASSPATH=.:${JAVA_HOME}/lib/dt.jar:${JAVA_HOME}/lib/tools.jar
