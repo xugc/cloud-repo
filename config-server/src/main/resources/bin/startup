@@ -1,5 +1,38 @@
 #!/bin/sh
 #by guchengxu1988@163.com
 #description:config-server
-export JAVA_HOME=/usr/local/java
+cd `dirname $0`
+cd ../
+export ROOT_HOME=`pwd`
+export LOG_FILE=${ROOT_HOME}/app.log
+if [ -z "${JAVA_HOME}" ]; then
+    export JAVA_HOME=/usr/local/java
+fi
 export CLASSPATH=.:${JAVA_HOME}/lib/dt.jar:${JAVA_HOME}/lib/tools.jar
+export JAVA_CLASS=com.gc.cloud.service.config.server.CloudConfigServerApp
+START() {
+     PIDS=`ps -ef|grep java |grep "CloudConfigServerApp"`
+     if [-n PIDS]; then
+        echo "CloudConfigServerApp is running..."
+     else
+        #add classpath
+        CLASSPATH=${CLASSPATH}:${ROOT_HOME}/lib/*
+        CLASSPATH=${CLASSPATH}:${ROOT_HOME}/config/
+        
+        echo "Using JAVA_HOME:${JAVA_HOME}"
+        echo "Using CLASSPATH:${CLASSPATH}"
+        echo "Using ROOT_HOME:${ROOT_HOME}"
+        
+        echo "Starting the CloudConfigServerApp ..."
+        
+        nohup sh -c '${JAVA_HOME}/bin/java ${JAVA_CLASS}' > ${LOG_FILE} 2>&1 &
+     fi
+}
+case "$1" in
+    start|START)
+    START
+    ;;
+    *)
+    echo "please input start|START"
+    ;;
+esac
