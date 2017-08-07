@@ -1,5 +1,10 @@
 #!/bin/sh
-export PROGRAM_SOURCE=/home/gc/git/cloud-repo
+export GIT_HOME=$(cd `dirname $0`; pwd)
+cd $GIT_HOME
+export PROGRAM_SOURCE=$GIT_HOME/cloud-repo
+if [ ! -d "$PROGRAM_SOURCE" ]; then
+   git clone https://github.com/xugc/cloud-repo.git
+fi
 cd $PROGRAM_SOURCE
 git pull
 export profile=$1
@@ -7,5 +12,4 @@ if [ -z "${profile}" ]; then
    profile=dev
 fi
 echo "current profile is : ${profile}."
-cd $PROGRAM_SOURCE
 mvn clean package -Dmaven.test.skip=true -P ${profile}
