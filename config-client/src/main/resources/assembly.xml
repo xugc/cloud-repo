@@ -16,12 +16,6 @@
 			</includes>
 			<outputDirectory>\config</outputDirectory>
 		</fileSet>
-		<fileSet>
-			<directory>src/main/resources/bin</directory>
-			<outputDirectory>\bin</outputDirectory>
-			<fileMode>0755</fileMode>
-			<lineEnding>unix</lineEnding>
-		</fileSet>
 	</fileSets>
 	<dependencySets>
 		<dependencySet>
