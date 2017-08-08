@@ -1,0 +1,44 @@
+#!/bin/sh
+#by guchengxu1988@163.com
+#description:eureka-server
+cd `dirname $0`
+cd ../
+export ROOT_HOME=`pwd`
+export LOG_FILE=${ROOT_HOME}/app.log
+if [ -z "${JAVA_HOME}" ]; then
+    export JAVA_HOME=/usr/local/java
+fi
+export CLASSPATH=.:${JAVA_HOME}/lib/dt.jar:${JAVA_HOME}/lib/tools.jar
+export CONFIG_PROFILE=$2
+if [ -z "${CONFIG_PROFILE}" ]; then
+    CONFIG_PROFILE=esb1
+fi
+export JAVA_OPTS=" --spring.cloud.config.name=${CONFIG_PROFILE} "
+export JAVA_CLASS=com.gc.cloud.service.eureka.server.EurekaServerApp
+START() {
+     PIDS=`ps -ef|grep java |grep "EurekaServerApp"`
+     if [-n PIDS]; then
+        echo "EurekaServerApp is running..."
+     else
+        #add classpath
+        CLASSPATH=${CLASSPATH}:${ROOT_HOME}/lib/*
+        CLASSPATH=${CLASSPATH}:${ROOT_HOME}/config/
+        
+        echo "Using JAVA_HOME:${JAVA_HOME}"
+        echo "Using CLASSPATH:${CLASSPATH}"
+        echo "Using ROOT_HOME:${ROOT_HOME}"
+        echo "Using JAVA_OPTS:${JAVA_OPTS}"
+        
+        echo "Starting the EurekaServerApp ..."
+        
+        nohup sh -c '${JAVA_HOME}/bin/java ${JAVA_OPTS} ${JAVA_CLASS}' > ${LOG_FILE} 2>&1 &
+     fi
+}
+case "$1" in
+    start|START)
+    START
+    ;;
+    *)
+    echo "please input start|START"
+    ;;
+esac
