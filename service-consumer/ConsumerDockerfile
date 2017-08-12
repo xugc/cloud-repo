@@ -1,7 +1,0 @@
-FROM java:7
-MAINTAINER "guchengxu1988@163.com"
-ADD service-consumer/target/service-consumer-0.0.1-SNAPSHOT.jar /consumer.jar
-RUN bash -c 'touch /consumer.jar'
-EXPOSE 8080
-ENTRYPOINT ["java","-jar","/consumer.jar"]
-#CMD ["--spring.cloud.config.name=c1"]
