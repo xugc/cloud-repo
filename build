@@ -1,7 +1,9 @@
 #!/bin/sh
-export GIT_HOME=$(cd `dirname $0`; pwd)
-cd $GIT_HOME
-export PROGRAM_SOURCE=$GIT_HOME/cloud-repo
+#export GIT_HOME=$(cd `dirname $0`; pwd)
+#cd $GIT_HOME
+#export PROGRAM_SOURCE=$GIT_HOME/cloud-repo
+#cd /home
+export PROGRAM_SOURCE=/home/git/cloud-repo
 if [ ! -d "$PROGRAM_SOURCE" ]; then
    git clone https://github.com/xugc/cloud-repo.git
 fi
