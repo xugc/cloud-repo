@@ -24,8 +24,8 @@ import org.springframework.web.filter.HiddenHttpMethodFilter;
 @Configuration
 public class WebMvcConfiguration {
 	@Bean
-	public FilterRegistrationBean filterRegistrationBean() {
-		FilterRegistrationBean filterRegister = new FilterRegistrationBean();
+	public FilterRegistrationBean<HiddenHttpMethodFilter> filterRegistrationBean() {
+		FilterRegistrationBean<HiddenHttpMethodFilter> filterRegister = new FilterRegistrationBean<>();
 		filterRegister.setFilter(new HiddenHttpMethodFilter());//_method
 		return filterRegister;
 	}
